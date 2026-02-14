@@ -5,8 +5,11 @@ from enum import StrEnum
 class GeminiModel(StrEnum):
     GEMINI_1_5_PRO = "gemini-1.5-pro-002"
     GEMINI_1_5_FLASH = "gemini-1.5-flash"
+
     GEMINI_2_5_FLASH = "gemini-2.5-flash"
     GEMINI_2_5_PRO = "gemini-2.5-pro"
+    GEMINI_2_5_FLASH_PREVIEW_09_2025 = "gemini-2.5-flash-preview-09-2025"
+
     GEMINI_FLASH_LATEST = "gemini-flash-latest"
     GEMINI_FLASH_LITE_LATEST = "gemini-flash-lite-latest"
 
@@ -33,53 +36,33 @@ class ProcessingStatus(StrEnum):
 
 class PromptStage(StrEnum):
     STAGE_1 = "stage_1"
+    STAGE_1_INITIAL_TRANSCRIPTION = "stage_1_initial_transcription"
+    STAGE_1_INITIAL_DETECTION = "stage_1_initial_detection"
     STAGE_3 = "stage_3"
+    STAGE_4 = "stage_4"
     GEMINI_TIMESTAMPED_TRANSCRIPTION = "gemini_timestamped_transcription"
 
 
-def get_detection_prompt_for_stage_1():
-    return open("prompts/Stage_1_detection_prompt.md", "r").read()
-
-
-def get_system_instruction_for_stage_1():
-    return open("prompts/Stage_1_system_instruction.md", "r").read()
-
-
-def get_output_schema_for_stage_1():
-    return json.load(open("prompts/Stage_1_output_schema.json", "r"))
-
-
 def get_user_prompt_for_stage_3():
-    return open("prompts/Stage_3_analysis_prompt.md", "r").read()
+    return open("prompts/stage_3/analysis_prompt.md", "r").read()
 
 
 def get_system_instruction_for_stage_3():
-    return open("prompts/Stage_3_system_instruction.md", "r").read()
-
+    return open("prompts/stage_3/system_instruction.md", "r").read()
 
 def get_output_schema_for_stage_3():
-    return json.load(open("prompts/Stage_3_output_schema.json", "r"))
-
-
-def get_timestamped_transcription_generation_prompt():
-    return open("prompts/Timestamped_transcription_generation_prompt.md", "r").read()
-
-
-def get_timestamped_transcription_generation_output_schema():
-    return json.load(open("prompts/Timestamped_transcription_generation_output_schema.json", "r"))
+    return json.load(open("prompts/stage_3/output_schema.json", "r"))
 
 
 def get_system_instruction_for_stage_4():
-    return open("prompts/Stage_4_system_instruction.md", "r").read()
-
+    return open("prompts/stage_4/system_instruction.md", "r").read()
 
 def get_user_prompt_for_stage_4():
-    return open("prompts/Stage_4_review_prompt.md", "r").read()
+    return open("prompts/stage_4/review_prompt.md", "r").read()
 
 
 def get_output_schema_for_stage_4():
-    return json.load(open("prompts/Stage_4_output_schema.json", "r"))
-
+    return json.load(open("prompts/stage_4/output_schema.json", "r"))
 
 def get_gemini_timestamped_transcription_generation_prompt():
     return open("prompts/Gemini_timestamped_transcription_generation_prompt.md", "r").read()
